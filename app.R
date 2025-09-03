@@ -48,7 +48,7 @@ ui <- fluidPage(
 # Server
 server <- function(input, output, session) {
   
-  df_metro <- read.csv("C:/Users/a/Documents/Dashboard_metro/datos_metro.csv")
+  df_metro <- read.csv("datos_metro.csv")
   df_agg <- aggregate(afluencia ~ anio + linea + estacion + tipo_pago, df_metro, FUN = sum)
   df_agg <- df_agg[-c(490),]  # Ajuste puntual
   
@@ -148,3 +148,4 @@ server <- function(input, output, session) {
 
 # Run app
 shinyApp(ui, server)
+
