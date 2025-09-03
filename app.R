@@ -79,7 +79,9 @@ server <- function(input, output, session) {
         plot.background = element_rect(fill = "transparent", color = NA),
         axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 1, size = 13, color = "white"),
         axis.text.y = element_text(size = 13, color = "white"),
-        axis.title = element_text(size = 17, color = "white", face = "bold")
+        axis.title = element_text(size = 17, color = "white", face = "bold"),
+        panel.grid.major = element_blank(),
+        ppanel.grid.minor = element_blank()
       ) +
       scale_y_continuous(labels = label_number(big.mark = ",")) +
       scale_x_discrete(labels = label_wrap(5)) +
@@ -152,6 +154,7 @@ server <- function(input, output, session) {
 
 # Run app
 shinyApp(ui, server)
+
 
 
 
