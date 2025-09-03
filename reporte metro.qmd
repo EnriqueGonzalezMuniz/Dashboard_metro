@@ -7,7 +7,7 @@ theme:
 logo: logo-metro.png
 ---
 
-```{shinylive-r}
+```{r}
 
 library(shiny)
 library(scales)
@@ -18,7 +18,7 @@ library(plotly)
 
 ```
 
-```{shinylive-r}
+```{r}
 ordenar_lineas <- function(lineas) {
   
   numeros <- as.numeric(gsub("Linea ", "", lineas[grepl("Linea \\d+", lineas)]))
@@ -32,7 +32,7 @@ ordenar_lineas <- function(lineas) {
 
 #  {.toolbar}
 
-```{shinylive-r}
+```{r}
 selectInput("linea_metro", "Selecciona una línea", 
                     choices = ordenar_lineas(c(paste("Linea", 1:9), "Linea 12", "Linea A", "Linea B")))
 ```
@@ -43,13 +43,13 @@ selectInput("linea_metro", "Selecciona una línea",
 
 ### Col 1 {width="50%"}
 
-```{shinylive-r}
+```{r}
 uiOutput("usuarios_totales")
 ```
 
 ### Col 2 {width="50%"}
 
-```{shinylive-r}
+```{r}
 uiOutput("ing_tot")
 ```
 
@@ -57,24 +57,24 @@ uiOutput("ing_tot")
 
 ### Col 1 {width="50%"}
 
-```{shinylive-r}
+```{r}
 uiOutput("usu_pago")
 ```
 
 ### Col 2 {width="50%"}
 
-```{shinylive-r}
+```{r}
 uiOutput("usu_grat")
 ```
 
 ## Row 3 {height="64%"}
 
-```{shinylive-r}
+```{r}
 #| title: Afluencia por tipo de pago
 plotlyOutput(outputId = "plot")
 ```
 
-```{shinylive-r}
+```{r}
 #| context: server
 
 df_metro <-  read.csv("C:/Users/a/Documents/datos_metro.csv")
@@ -266,3 +266,4 @@ output$usu_grat <- renderUI({
 })
 
 ```
+
