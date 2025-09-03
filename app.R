@@ -44,7 +44,7 @@ ui <- fluidPage(
   
   # 📈 Gráfica
   fluidRow(
-    column(12, plotlyOutput("plot", height ="600px"))
+    column(12, plotlyOutput("plot", height ="800px"))
   )
 )
 
@@ -152,6 +152,7 @@ server <- function(input, output, session) {
 
 # Run app
 shinyApp(ui, server)
+
 
 
 
