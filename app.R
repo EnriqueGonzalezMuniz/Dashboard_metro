@@ -16,34 +16,38 @@ ordenar_lineas <- function(lineas) {
   return(lineas_ordenadas)
 }
 
-# UI
 ui <- fluidPage(
   theme = bs_theme(version = 5, bootswatch = "darkly"),
   tags$head(
     tags$link(rel = "icon", href = "logo-metro.png"),
     tags$title("Afluencia Metro")
   ),
-  
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("linea_metro", "Selecciona una línea", 
-                  choices = ordenar_lineas(c(paste("Linea", 1:9), "Linea 12", "Linea A", "Linea B")))
-    ),
-    mainPanel(
-      fluidRow(
-        column(6, uiOutput("usuarios_totales")),
-        column(6, uiOutput("ing_tot"))
-      ),
-      fluidRow(
-        column(6, uiOutput("usu_pago")),
-        column(6, uiOutput("usu_grat"))
-      ),
-      fluidRow(
-        column(12, plotlyOutput("plot"))
-      )
+
+  # 🔼 Panel superior con el selector
+  fluidRow(
+    column(12,
+           selectInput("linea_metro", "Selecciona una línea", 
+                       choices = ordenar_lineas(c(paste("Linea", 1:9), "Linea 12", "Linea A", "Linea B")),
+                       width = "100%")
     )
+  ),
+  
+  # 📊 Value boxes
+  fluidRow(
+    column(6, uiOutput("usuarios_totales")),
+    column(6, uiOutput("ing_tot"))
+  ),
+  fluidRow(
+    column(6, uiOutput("usu_pago")),
+    column(6, uiOutput("usu_grat"))
+  ),
+  
+  # 📈 Gráfica
+  fluidRow(
+    column(12, plotlyOutput("plot"))
   )
 )
+
 
 # Server
 server <- function(input, output, session) {
@@ -148,4 +152,5 @@ server <- function(input, output, session) {
 
 # Run app
 shinyApp(ui, server)
+
 
