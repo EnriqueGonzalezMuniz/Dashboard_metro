@@ -20,7 +20,36 @@ ui <- fluidPage(
   theme = bs_theme(version = 5, bootswatch = "darkly"),
   tags$head(
     tags$link(rel = "icon", href = "logo-metro.png"),
-    tags$title("Afluencia Metro")
+    tags$title("Afluencia Metro"),
+    tags$style(HTML("
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .shiny-input-container {
+    width: 100% !important;
+  }
+
+  .plot-container {
+    height: 100%;
+  }
+
+  #plot {
+    height: 70vh !important;
+  }
+
+  .value-box {
+    min-height: 100px;
+  }
+"))
+
   ),
 
   # 🔼 Panel superior con el selector
@@ -44,7 +73,7 @@ ui <- fluidPage(
   
   # 📈 Gráfica
   fluidRow(
-    column(12, plotlyOutput("plot", height ="800px"))
+    column(12, plotlyOutput("plot", height = "70vh"))
   )
 )
 
@@ -154,6 +183,7 @@ server <- function(input, output, session) {
 
 # Run app
 shinyApp(ui, server)
+
 
 
 
